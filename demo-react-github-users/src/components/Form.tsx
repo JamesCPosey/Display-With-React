@@ -1,9 +1,14 @@
+import { useState } from "react"
+
 function Form() {
+    const [username, setUsername] = useState('')
     return ( 
     <form className="w-full max-w-sm mx-auto">
         <div className="flex mt-10">
             <input name="username"
              required
+             value={username}
+             onChange={(event) => setUsername(event.target.value)}
              className="block w-full px-3 py-2 borner border-gray-300 form-input rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300" 
              />
             <button
