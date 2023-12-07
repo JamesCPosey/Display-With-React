@@ -1,9 +1,24 @@
 import { useState } from "react"
+import { FormEvent } from "react"
 
 function Form() {
     const [username, setUsername] = useState('')
+
+   async function handleSubmit(event: FormEvent){
+        event.preventDefault()
+        
+        const response = await fetch("https://api.github.com/users/${username}")
+        if (response.status === 200){
+            const data = await response.json()
+            console.log(data)
+        } else {
+            alert("Username not found")
+        }
+    }
+
     return ( 
-    <form className="w-full max-w-sm mx-auto">
+    <form className="w-full max-w-sm mx-auto"
+      onSubmit={handleSubmit}>
         <div className="flex mt-10">
             <input name="username"
              required
