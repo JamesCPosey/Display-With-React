@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { FormEvent } from "react"
+import { useState } from 'react'
+import { FormEvent } from 'react'
 
 function Form() {
     const [username, setUsername] = useState('')
@@ -7,7 +7,7 @@ function Form() {
    async function handleSubmit(event: FormEvent){
         event.preventDefault()
         
-        const response = await fetch("https://api.github.com/users/${username}")
+        const response = await fetch('https://api.github.com/users/${username}')
         if (response.status === 200){
             const data = await response.json()
             console.log(data)
@@ -17,8 +17,7 @@ function Form() {
     }
 
     return ( 
-    <form className="w-full max-w-sm mx-auto"
-      onSubmit={handleSubmit}>
+    <form className='w-full max-w-sm mx-auto' onSubmit={handleSubmit}>
         <div className="flex mt-10">
             <input name="username"
              required
